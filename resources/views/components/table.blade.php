@@ -1,6 +1,6 @@
 <form method="get">
-	<div class="card r-list">
-		<div class="card-header text-dark bg-light p-3">
+	<div class="card r-list border-0">
+		<div class="card-header text-dark bg-light p-3 border border-bottom-0">
 			@if(isset($cardHeader))
 				{{ $cardHeader }}
 			@endif
@@ -12,7 +12,7 @@
 					@foreach($table->records as $record)
 						<tr data-id="{{ $record->id }}">
 							@foreach($table->columns() as $column)
-								<td class="{{ $column->getClasses() }}">
+								<td @class([$column->getClasses()])>
 									@isset(${'tableCell' . $column->name})
 										@php
 											$ref = new \ReflectionFunction(${'tableCell' . $column->name});
@@ -28,7 +28,7 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="card-footer">
+		<div class="card-footer border border-top-0">
 			@if(isset($cardHeader))
 				{{ $cardFooter }}
 			@endif
